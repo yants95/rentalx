@@ -1,5 +1,5 @@
 
-import { createCategoryController } from '@/modules/cars/usecases/create-category'
+import createCategoryController  from '@/modules/cars/usecases/create-category'
 import { listCategoryController } from '@/modules/cars/usecases/list-categories'
 import { importCategoryController } from '@/modules/cars/usecases/import-category/'
 
@@ -12,7 +12,7 @@ const upload = multer({
 })
 
 categoryRouter.post('/', (request, response) => {
-    return createCategoryController.handle(request, response);
+    return createCategoryController().handle(request, response);
 })
 
 categoryRouter.get('/', (request, response) => {
