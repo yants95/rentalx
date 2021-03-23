@@ -1,4 +1,4 @@
-import { Category } from '@/modules/cars/model/category'
+import { Category } from '@/modules/cars/entities/category'
 import { ICategoryRepository } from '@/modules/cars/repositories'
 
 export class ListCategoryUseCase {
