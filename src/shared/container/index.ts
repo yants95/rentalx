@@ -1,4 +1,9 @@
-import { ICategoryRepository, CategoryRepository, ISpecificationRepository, SpecificationRepository } from '@/modules/cars/repositories'
+import { 
+    ICategoryRepository, 
+    CategoryRepository, 
+    ISpecificationRepository, 
+    SpecificationRepository } 
+from '@/modules/cars/repositories'
 
 import { container } from 'tsyringe'
 
