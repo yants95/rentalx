@@ -12,6 +12,7 @@ const upload = multer({
 })
 
 categoryRouter.post('/', (request, response) => {
+    console.log('Reload is working!')
     return createCategoryController.handle(request, response);
 })
 
