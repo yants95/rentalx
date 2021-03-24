@@ -16,7 +16,9 @@ export class UserRepository implements IUserRepository {
             name: data.name,
             email: data.email,
             driver_license: data.driver_license,
-            password: data.password
+            password: data.password,
+            avatar_url: data.avatar_url,
+            id: data.id
         })
 
         return await this.repository.save(user);
