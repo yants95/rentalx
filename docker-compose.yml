@@ -14,11 +14,11 @@ services:
 
   app:
     build: .
-    container_name: rentalx
+    container_name: rentx
     ports:
       - 3333:3333
     volumes:
-      - .:/rentalx/app
+      - .:/rentx/app
 
 volumes:
   pgdata:

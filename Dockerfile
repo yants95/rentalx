@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /rentalx/app
+WORKDIR /rentx/app
 
 COPY package.json ./
 
