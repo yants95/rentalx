@@ -10,9 +10,6 @@ export class User {
     name: string
 
     @Column()
-    username: string
-
-    @Column()
     email: string
 
     @Column()
@@ -30,7 +27,6 @@ export class User {
     constructor() {
         if (!this.id) {
             this.id = uuidv4()
-            this.isAdmin = false
         }
     }
 }
