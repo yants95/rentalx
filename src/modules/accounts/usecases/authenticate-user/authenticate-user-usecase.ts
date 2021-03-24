@@ -1,4 +1,5 @@
 import { IUserRepository } from "@/modules/accounts/repositories";
+import { AppError } from '@/errors'
 
 import { inject, injectable } from "tsyringe";
 import { compare } from 'bcryptjs'
@@ -22,11 +23,11 @@ export class AuthenticateUserUseCase {
     async execute(email: string, password: string): Promise<IResponse> {
         const user = await this.userRepository.findByEmail(email)
 
-        if (!user) throw new Error('E-mail or password incorrect');
+        if (!user) throw new AppError('E-mail or password incorrect');
 
         const passwordMatch = await compare(password, user.password)
 
-        if (!passwordMatch) throw new Error('E-mail or password incorrect');
+        if (!passwordMatch) throw new AppError('E-mail or password incorrect');
 
         const token = sign({}, process.env.JWT_SECRET, {
             subject: user.id,
