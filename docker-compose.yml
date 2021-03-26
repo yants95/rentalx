@@ -11,6 +11,8 @@ services:
       - .env
     volumes:
       - pgdata:/data/postgres
+    networks:
+      - ignite
 
   app:
     build: .
@@ -19,7 +21,14 @@ services:
       - 3333:3333
     volumes:
       - .:/rentx/app
+    depends_on: 
+      - database_ignite
+    networks:
+      - ignite
 
 volumes:
   pgdata:
-    driver: local
+
+networks:
+  ignite:
+    driver: "bridge"
