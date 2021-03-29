@@ -1,5 +1,5 @@
-import 'module-alias/register'
 import 'reflect-metadata'
+import 'module-alias/register'
 import express, { NextFunction, Request, Response } from 'express'
 import 'express-async-errors'
 
