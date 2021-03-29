@@ -1,7 +1,7 @@
 import { Category } from '@/modules/cars/entities';
 import { ICategoryRepository, ICreateCategoryDTO } from "@/modules/cars/repositories";
 
-export class CreateCategoryRepositorySpy implements ICategoryRepository {
+export class CategoryRepositorySpy implements ICategoryRepository {
     categories: Category[] = []
 
     async create({ name, description }: ICreateCategoryDTO): Promise<void> {

@@ -1,26 +1,26 @@
 import "reflect-metadata"
 
 import { CreateCategoryUseCase } from "@/modules/cars/usecases/create-category/create-category-usecase"
-import { CreateCategoryRepositorySpy } from "@/tests/modules/cars/repositories/mocks"
+import { CategoryRepositorySpy } from "@/tests/modules/cars/repositories/mocks"
 import { AppError } from "@/errors"
 
 type SutTypes = {
     sut: CreateCategoryUseCase
-    createCategoryRepositorySpy: CreateCategoryRepositorySpy
+    categoryRepositorySpy: CategoryRepositorySpy
 }
 
 const makeSut = (): SutTypes => {
-    const createCategoryRepositorySpy = new CreateCategoryRepositorySpy()
-    const sut = new CreateCategoryUseCase(createCategoryRepositorySpy)
+    const categoryRepositorySpy = new CategoryRepositorySpy()
+    const sut = new CreateCategoryUseCase(categoryRepositorySpy)
     return {
       sut,
-      createCategoryRepositorySpy
+      categoryRepositorySpy
     }
 }
 
 describe('CreateCategoryUseCase', () => {
     it('should be able to create a new category', async () => {
-        const { sut, createCategoryRepositorySpy } = makeSut()
+        const { sut, categoryRepositorySpy } = makeSut()
 
         const category = {
             name: 'any_name',
@@ -32,7 +32,7 @@ describe('CreateCategoryUseCase', () => {
             description: category.description
         })
 
-        const categoryCreated = await createCategoryRepositorySpy.findByName(category.name)
+        const categoryCreated = await categoryRepositorySpy.findByName(category.name)
 
         expect(categoryCreated).toHaveProperty('id')
     })
