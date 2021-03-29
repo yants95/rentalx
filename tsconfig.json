@@ -7,9 +7,10 @@
     "esModuleInterop": true,                        
     "sourceMap": true,                           
     "outDir": "dist",                              
-    "rootDirs": ["src"],                              
+    "rootDirs": ["src", "tests"],                              
     "baseUrl": "src",                             
     "paths": {
+      "@/tests/*": ["../tests/*"],
       "@/*": ["*"]
     },    
     "resolveJsonModule": true                    
