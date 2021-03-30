@@ -1,3 +1,3 @@
 export * from './i-category-repository'
 export * from './i-specification-repository'
-export * from './implementations'
+export * from './i-car-repository'
