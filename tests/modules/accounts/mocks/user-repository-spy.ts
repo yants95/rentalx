@@ -1,6 +1,6 @@
 import { IUserRepository } from "@/modules/accounts/repositories";
 import { ICreateUserDTO } from "@/modules/accounts/dtos";
-import { User } from "@/modules/accounts/entities";
+import { User } from "@/modules/accounts/infra/typeorm/entities";
 
 export class UserRepositorySpy implements IUserRepository {
     users: User[] = []

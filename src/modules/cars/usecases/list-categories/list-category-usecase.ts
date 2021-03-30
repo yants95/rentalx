@@ -1,4 +1,4 @@
-import { Category } from '@/modules/cars/entities/category'
+import { Category } from '@/modules/cars/infra/typeorm/entities/category'
 import { ICategoryRepository } from '@/modules/cars/repositories'
 
 import { inject, injectable } from 'tsyringe'

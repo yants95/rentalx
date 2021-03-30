@@ -1,5 +1,5 @@
 import { IUserRepository } from "@/modules/accounts/repositories";
-import { AppError } from '@/errors'
+import { AppError } from '@/shared/errors'
 
 import { inject, injectable } from "tsyringe";
 import { compare } from 'bcryptjs'

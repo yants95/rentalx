@@ -2,7 +2,7 @@ import "reflect-metadata"
 
 import { CreateCategoryUseCase } from "@/modules/cars/usecases/create-category/create-category-usecase"
 import { CategoryRepositorySpy } from "@/tests/modules/cars/repositories/mocks"
-import { AppError } from "@/errors"
+import { AppError } from "@/shared/errors"
 
 type SutTypes = {
     sut: CreateCategoryUseCase

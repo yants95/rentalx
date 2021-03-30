@@ -1,2 +1,2 @@
 export * from './i-user-repository'
-export * from './implementations'
+export * from '../infra/typeorm/repositories'

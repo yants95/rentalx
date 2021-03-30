@@ -4,7 +4,7 @@ import "reflect-metadata"
 import { AuthenticateUserUseCase, CreateUserUseCase } from "@/modules/accounts/usecases"
 import { UserRepositorySpy } from "@/tests/modules/accounts/mocks"
 import { ICreateUserDTO } from "@/modules/accounts/dtos"
-import { AppError } from "@/errors"
+import { AppError } from "@/shared/errors"
 
 type SutTypes = {
     sut: AuthenticateUserUseCase

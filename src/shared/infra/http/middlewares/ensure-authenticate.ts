@@ -1,5 +1,5 @@
 import { UserRepository } from "@/modules/accounts/repositories";
-import { AppError } from '@/errors'
+import { AppError } from '@/shared/errors'
 
 import { NextFunction, Request, Response } from "express";
 import { verify } from 'jsonwebtoken'
