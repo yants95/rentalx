@@ -1,7 +1,7 @@
 
 import { CreateUserController, UpdateUserAvatarController }  from '@/modules/accounts/usecases'
-import uploadConfig from '@/config/upload'
 import { ensureAuthenticate } from '@/shared/infra/http/middlewares'
+import uploadConfig from '@/config/upload'
 
 import { Router } from 'express'
 import multer from 'multer'

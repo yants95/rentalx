@@ -1,7 +1,4 @@
-
-import { CreateCategoryController }  from '@/modules/cars/usecases/create-category/create-category-controller'
-import { ListCategoryController } from '@/modules/cars/usecases/list-categories/list-category-controller'
-import { ImportCategoryController } from '@/modules/cars/usecases/import-category/import-category-controller'
+import { CreateCategoryController, ListCategoryController, ImportCategoryController } from '@/modules/cars/usecases'
 
 import { Router } from 'express'
 import multer from 'multer'
