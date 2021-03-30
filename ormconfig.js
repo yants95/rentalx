@@ -5,9 +5,9 @@ module.exports = {
     "username": process.env.POSTGRES_USER,
     "password": process.env.POSTGRES_PASSWORD,
     "database": process.env.POSTGRES_DB,
-    "migrations": ['./src/database/migrations/*.ts'],
+    "migrations": ['./src/shared/infra/typerm/migrations/*.ts'],
     "entities": ["./src/modules/**/entities/*.ts"],
     "cli": {
-        "migrationsDir": "./src/database/migrations"
+        "migrationsDir": "./src/shared/infra/typerm/migrations"
     }
 }
