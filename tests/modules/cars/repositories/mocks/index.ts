@@ -1,1 +1,1 @@
-export * from './create-category-repository-spy'
+export * from './category-repository-spy'
