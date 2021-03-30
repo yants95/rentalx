@@ -3,14 +3,13 @@ import { ICarRepository } from '@/modules/cars/repositories'
 import { Car } from '@/modules/cars/infra/typeorm/entities'
 import { AppError } from '@/shared/errors'
 
-// import { injectable, inject } from 'tsyringe'
+import { injectable, inject } from 'tsyringe'
 
 type IRequest = Omit<ICreateCarDTO, 'id'>
-
-// @injectable()
+@injectable()
 export class CreateCarUseCase {
     constructor (
-        // @inject('CarRepository')
+        @inject('CarRepository')
         private carRepository: ICarRepository
     ) {}
 

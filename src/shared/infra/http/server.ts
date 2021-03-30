@@ -19,7 +19,7 @@ app.use(express.json())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use(router)
 
-app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
+app.use((err: Error, _: Request, response: Response, __: NextFunction) => {
     if (err instanceof AppError) {
         return response.status(err.statusCode).json({ message: err.message })
     }
@@ -30,4 +30,4 @@ app.use((err: Error, request: Request, response: Response, next: NextFunction) =
     })
 })
 
-app.listen(3333, () => console.log('Server is running!'));
+app.listen(3333, () => console.log('Server is running at !'));
