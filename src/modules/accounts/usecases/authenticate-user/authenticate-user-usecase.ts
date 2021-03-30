@@ -29,7 +29,7 @@ export class AuthenticateUserUseCase {
 
         if (!passwordMatch) throw new AppError('E-mail or password incorrect');
 
-        const token = sign({}, process.env.JWT_SECRET, {
+        const token = sign({}, String(process.env.JWT_SECRET), {
             subject: user.id,
             expiresIn: '1d'
         });
