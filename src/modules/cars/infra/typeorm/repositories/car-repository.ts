@@ -30,4 +30,8 @@ export class CarRepository implements ICarRepository {
 
         return await carsQuery.getMany();
     }
+
+    async findById(id: string): Promise<Car> {
+        return await this.repository.findOne(id)
+    }
 }

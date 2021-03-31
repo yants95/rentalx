@@ -1,3 +1,5 @@
+import { Specification } from "@/modules/cars/infra/typeorm/entities";
+
 export type ICreateCarDTO = {
     name: string
     description: string
@@ -7,4 +9,6 @@ export type ICreateCarDTO = {
     brand: string
     category_id: string
     available: boolean
+    specifications?: Specification[]
+    id?: string
 }
