@@ -30,4 +30,4 @@ app.use((err: Error, _: Request, response: Response, __: NextFunction) => {
     })
 })
 
-app.listen(3333, () => console.log('Server is running at !'));
+app.listen(3333, () => console.log('Server is running!'));
