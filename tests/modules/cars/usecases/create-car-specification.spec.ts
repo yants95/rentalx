@@ -1,21 +1,25 @@
 import "reflect-metadata"
 
 import { CreateCarSpecificationUseCase } from "@/modules/cars/usecases"
-import { CarRepositorySpy } from '@/tests/modules/cars/repositories/mocks'
+import { CarRepositorySpy, SpecificationRepositorySpy } from '@/tests/modules/cars/repositories/mocks'
 import { AppError } from "@/shared/errors"
 import { ICreateCarDTO } from "@/modules/cars/dtos"
+import { ICreateSpecificationDTO } from '@/modules/cars/repositories'
 
 type SutTypes = {
     sut: CreateCarSpecificationUseCase
     carRepositorySpy: CarRepositorySpy
+    specificationRepositorySpy: SpecificationRepositorySpy
 }
 
 const makeSut = (): SutTypes => {
     const carRepositorySpy = new CarRepositorySpy()
-    const sut = new CreateCarSpecificationUseCase(carRepositorySpy)
+    const specificationRepositorySpy = new SpecificationRepositorySpy()
+    const sut = new CreateCarSpecificationUseCase(carRepositorySpy, specificationRepositorySpy)
     return {
       sut,
-      carRepositorySpy
+      carRepositorySpy,
+      specificationRepositorySpy
     }
 }
 
@@ -30,12 +34,19 @@ const makeCar = (): ICreateCarDTO => ({
     available: true
 })
 
+const makeSpecification = (): ICreateSpecificationDTO => ({
+    name: 'any_name', 
+    description: 'any_description'
+})
+
 describe('CreateCarSpecificationUseCase', () => { 
     it('should be able to add a new specification to a car', async () => {
-        const { sut, carRepositorySpy } = makeSut() 
+        const { sut, carRepositorySpy, specificationRepositorySpy } = makeSut() 
+        const specification = await specificationRepositorySpy.create(makeSpecification())
         const car = await carRepositorySpy.create(makeCar())
-        const specifications_id = ['54321']
-        await sut.execute(car.id, specifications_id)
+        const carSpecifications = await sut.execute(car.id, [String(specification.id)])
+        expect(carSpecifications).toHaveProperty('specifications')
+        expect(carSpecifications.specifications.length).toBe(1)
     })
 
     it('should not be able to add a new specification to an non-existing car', async () => {
