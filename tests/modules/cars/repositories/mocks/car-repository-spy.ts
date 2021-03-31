@@ -12,8 +12,6 @@ export class CarRepositorySpy implements ICarRepository {
 
         this.cars.push(car)
 
-        console.log(car)
-
         return car
     }
 
