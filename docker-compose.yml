@@ -20,7 +20,7 @@ services:
       - 3333:3333
       - 9229:9229
     volumes: 
-      - .:/usr/app
+      - .:/rentx/app
     links: 
       - database_ignite
     depends_on:
