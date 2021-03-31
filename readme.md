@@ -26,8 +26,6 @@
 
 **Functional Requisites**
 - Should be possible register an specification to a car
-- Should be possible list all specifications
-- Should be possible list all cars
 
 **Business Rule**
 - Should not be possible to register an specification to a non existing car
