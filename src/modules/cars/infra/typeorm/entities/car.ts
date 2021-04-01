@@ -1,4 +1,5 @@
-import { Category, Specification } from '@/modules/cars/infra/typeorm/entities'
+// import { Category, Specification } from '@/modules/cars/infra/typeorm/entities'
+import { Category, Specification } from '../entities'
 
 import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryColumn } from 'typeorm'
 import { v4 } from 'uuid'
