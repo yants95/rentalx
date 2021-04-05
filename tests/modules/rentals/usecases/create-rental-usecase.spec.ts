@@ -1,5 +1,6 @@
 import { CreateRentalUseCase } from '@/modules/rentals/usecases'
 import { RentalRepositorySpy } from '@/tests/modules/rentals/mocks'
+import { CarRepositorySpy } from '@/tests/modules/cars/repositories/mocks'
 import { ICreateRentDTO } from "@/modules/rentals/dtos"
 import { AppError } from '@/shared/errors'
 import { DayJSProvider } from '@/shared/container/providers/date-provider/implementations'
@@ -9,17 +10,20 @@ import dayjs from 'dayjs'
 type SutTypes = {
     sut: CreateRentalUseCase
     rentalRepositorySpy: RentalRepositorySpy
+    carRepositorySpy: CarRepositorySpy
     dayjsProvider: DayJSProvider
 }
 
 const makeSut = (): SutTypes => {
     const dayjsProvider = new DayJSProvider()
     const rentalRepositorySpy = new RentalRepositorySpy()
-    const sut = new CreateRentalUseCase(rentalRepositorySpy, dayjsProvider)
+    const carRepositorySpy = new CarRepositorySpy()
+    const sut = new CreateRentalUseCase(rentalRepositorySpy, dayjsProvider, carRepositorySpy)
     return {
         sut,
         rentalRepositorySpy,
-        dayjsProvider
+        dayjsProvider,
+        carRepositorySpy
     }
 }
 

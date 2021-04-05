@@ -3,16 +3,18 @@ import { Rental } from '@/modules/rentals/infra/typeorm/entities'
 import { AppError } from '@/shared/errors'
 import { IRentalRepository } from '@/modules/rentals/repositories'
 import { IDateProvider } from '@/shared/container/providers'
+import { ICarRepository } from '@/modules/cars/repositories'
 
 import { inject, injectable } from 'tsyringe'
-
 @injectable()
 export class CreateRentalUseCase {
     constructor (
         @inject('RentalRepository')
         private rentalRepository: IRentalRepository,
         @inject('DayJSProvider')
-        private dateProvider: IDateProvider
+        private dateProvider: IDateProvider,
+        @inject('CarRepository')
+        private carRepository: ICarRepository
     ) {}
 
     async execute(data: ICreateRentDTO): Promise<Rental> {
@@ -28,6 +30,8 @@ export class CreateRentalUseCase {
         const compare = this.dateProvider.compareInHours(currentDate, data.expected_return_date)
 
         if (compare < minimalHours) throw new AppError('Invalid return time!')
+
+        await this.carRepository.updateAvailable(data.car_id, false)
 
         return await this.rentalRepository.create(data)
     }
