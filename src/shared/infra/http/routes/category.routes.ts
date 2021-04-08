@@ -13,8 +13,8 @@ const createCategoryController = new CreateCategoryController()
 const importCategoryController = new ImportCategoryController()
 const listCategoryController = new ListCategoryController()
 
-categoryRouter.post('/', createCategoryController.handle);
+categoryRouter.post('/', ensureAuthenticate, createCategoryController.handle);
 categoryRouter.get('/', ensureAuthenticate, listCategoryController.handle);
-categoryRouter.post('/import', upload.single('file'), importCategoryController.handle);
+categoryRouter.post('/import', ensureAuthenticate, upload.single('file'), importCategoryController.handle);
 
 export { categoryRouter }

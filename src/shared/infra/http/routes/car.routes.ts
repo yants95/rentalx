@@ -17,6 +17,6 @@ const uploadCarImagesUseController = new UploadCarImagesUseController()
 carRouter.post('/', ensureAuthenticate, ensureAdmin, createCarController.handle);
 carRouter.post('/specifications/:id', ensureAuthenticate, ensureAdmin, createCarSpecificationController.handle);
 carRouter.post('/images/:id', ensureAuthenticate, ensureAdmin, upload.array('images'), uploadCarImagesUseController.handle)
-carRouter.get('/available', listAvailableCarsController.handle);
+carRouter.get('/available', ensureAuthenticate, listAvailableCarsController.handle);
 
 export { carRouter }
