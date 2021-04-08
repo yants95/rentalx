@@ -1,4 +1,4 @@
-import { categorySchema, specificationSchema, categoryImportSchema, securitySchema, sessionSchema, carSchema } from './schemas/'
+import { categorySchema, specificationSchema, categoryImportSchema, securitySchema, sessionSchema, carSchema, carImageSchema } from './schemas/'
 
 export default {
   category: categorySchema,
@@ -6,5 +6,6 @@ export default {
   categoryImport: categoryImportSchema,
   session: sessionSchema,
   security: securitySchema,
-  car: carSchema
+  car: carSchema,
+  carImage: carImageSchema
 }
