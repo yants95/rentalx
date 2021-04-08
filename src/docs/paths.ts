@@ -1,8 +1,9 @@
-import { categoryPath, specificationPath, categoryImportPath, sessionPath } from './paths/'
+import { categoryPath, specificationPath, categoryImportPath, sessionPath, carPath } from './paths/'
 
 export default {
   '/categories': categoryPath,
   '/specifications': specificationPath,
   '/categories/import': categoryImportPath,
-  '/sessions': sessionPath
+  '/sessions': sessionPath,
+  '/cars': carPath
 }
