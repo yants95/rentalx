@@ -1,7 +1,8 @@
-import { categorySchema, specificationSchema, categoryImportSchema } from './schemas/'
+import { categorySchema, specificationSchema, categoryImportSchema, sessionSchema } from './schemas/'
 
 export default {
   category: categorySchema,
   specification: specificationSchema,
-  categoryImport: categoryImportSchema
+  categoryImport: categoryImportSchema,
+  session: sessionSchema
 }
