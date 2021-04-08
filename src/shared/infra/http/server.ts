@@ -4,7 +4,8 @@ import 'express-async-errors'
 import express, { NextFunction, Request, Response } from 'express'
 
 import { router } from '@/shared/infra/http/routes'
-import swaggerFile from '@/swagger.json'
+// import swaggerFile from '@/swagger.json'
+import apiDocs from '@/docs'
 
 import '@/shared/infra/typeorm';
 import '@/shared/container'
@@ -16,7 +17,7 @@ import swaggerUi from 'swagger-ui-express'
 const app = express()
 
 app.use(express.json())
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs))
 app.use(router)
 
 app.use((err: Error, _: Request, response: Response, __: NextFunction) => {
