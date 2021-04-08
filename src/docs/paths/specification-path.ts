@@ -1,5 +1,8 @@
 export const specificationPath = {
   post: {
+    security: [{
+      apiKeyAuth: []
+    }],
     tags: ["Specifications"],
     summary: "Create a specification",
     description: "Create a new specification",

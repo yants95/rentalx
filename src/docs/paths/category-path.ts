@@ -1,5 +1,8 @@
 export const categoryPath = {
   post: {
+    security: [{
+      apiKeyAuth: []
+    }],
     tags: ["Category"],
     summary: "Create a category",
     description: "Create a new category",
@@ -23,6 +26,9 @@ export const categoryPath = {
     }
   },
   get: {
+    security: [{
+      apiKeyAuth: []
+    }],
     tags: ["Category"],
     summary: "List all categories",
     description: "List all categories",
