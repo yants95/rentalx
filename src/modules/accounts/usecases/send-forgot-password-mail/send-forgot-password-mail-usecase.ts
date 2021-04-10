@@ -1,5 +1,5 @@
 import { IUserRepository, IUserTokenRepository } from "@/modules/accounts/repositories";
-import { IDateProvider } from "@/shared/container/providers";
+import { IDateProvider, IMailProvider } from "@/shared/container/providers";
 import { AppError } from "@/shared/errors";
 import { ICreateUserTokenDTO } from "@/modules/accounts/dtos";
 
@@ -14,7 +14,9 @@ export class SendForgotPasswordMailUseCase {
     @inject("UserTokenRepository")
     private userTokenRepository: IUserTokenRepository,
     @inject("DayJSProvider")
-    private dateProvider: IDateProvider
+    private dateProvider: IDateProvider,
+    @inject("EtherealMailProvider")
+    private mailProvider: IMailProvider
   ) {}
 
   async execute (email: string): Promise<void> {
@@ -31,5 +33,7 @@ export class SendForgotPasswordMailUseCase {
     }
 
     await this.userTokenRepository.create(userTokenData)
+
+    await this.mailProvider.sendMail(email, "Password recovery", `O link para o reset é ${refreshToken}`)
   }
 }
