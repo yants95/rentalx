@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
 
 @Entity('users_token')
-export class UsersToken {
+export class UserToken {
   @PrimaryColumn()
   id: string
 
@@ -19,7 +19,7 @@ export class UsersToken {
   refresh_token: string
 
   @Column()
-  expires_date: string
+  expires_date: Date
 
   @CreateDateColumn()
   created_at: Date
