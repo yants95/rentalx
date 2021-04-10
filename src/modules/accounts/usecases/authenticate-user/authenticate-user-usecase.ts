@@ -1,11 +1,11 @@
-import { IUserRepository, IUsersTokenRepository } from "@/modules/accounts/repositories";
+import { IUserRepository, IUserTokenRepository } from "@/modules/accounts/repositories";
 import { AppError } from '@/shared/errors'
 import { IDateProvider } from "@/shared/container/providers";
 
 import { inject, injectable } from "tsyringe";
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
-import { ICreateUsersTokenDTO } from "../../dtos";
+import { ICreateUserTokenDTO } from "../../dtos";
 interface IResponse {
   user: {
       name: string
@@ -20,8 +20,8 @@ export class AuthenticateUserUseCase {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
-    @inject('UsersTokenRepository')
-    private usersTokenRepository: IUsersTokenRepository,
+    @inject('UserTokenRepository')
+    private usersTokenRepository: IUserTokenRepository,
     @inject('DayJSProvider')
     private dateProvider: IDateProvider
   ) {}
@@ -46,7 +46,7 @@ export class AuthenticateUserUseCase {
 
     const refreshTokenExpiresDate = this.dateProvider.addDays(30)
 
-    const userTokenData: ICreateUsersTokenDTO = {
+    const userTokenData: ICreateUserTokenDTO = {
       user_id: user.id,
       expires_date: refreshTokenExpiresDate,
       refresh_token: refreshToken
