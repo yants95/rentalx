@@ -24,7 +24,7 @@ export class CreateRentalUseCase {
         if (carUnavailable) throw new AppError('Car is unavailable!')
 
         const rentalOpenToUser = await this.rentalRepository.findOpenRentalByUser(data.user_id)
-        if (rentalOpenToUser) throw new AppError("There's a rental in progress for this users!")
+        if (rentalOpenToUser) throw new AppError("There's a rental in progress for this user!")
 
         const currentDate = this.dateProvider.dateNow()
         const compare = this.dateProvider.compareInHours(currentDate, data.expected_return_date)
