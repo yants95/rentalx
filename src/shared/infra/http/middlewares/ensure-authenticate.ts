@@ -1,4 +1,4 @@
-import { UserRepository } from "@/modules/accounts/repositories";
+import { UserRepository } from "@/modules/accounts/infra/typeorm/repositories";
 import { AppError } from '@/shared/errors'
 
 import { NextFunction, Request, Response } from "express";
