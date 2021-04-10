@@ -5,7 +5,7 @@ import { ICreateUserTokenDTO } from "@/modules/accounts/dtos";
 
 import { inject, injectable } from "tsyringe"
 import { v4 } from "uuid"
-
+import { resolve } from "path"
 @injectable()
 export class SendForgotPasswordMailUseCase {
   constructor (
@@ -23,6 +23,8 @@ export class SendForgotPasswordMailUseCase {
     const user = await this.userRepository.findByEmail(email)
     if (!user) throw new AppError("User not found.")
 
+    const templatePath = resolve(__dirname, "..", "..", "views", "email", "forgot-password.hbs")
+
     const refreshToken = v4()
     const expiresDate = this.dateProvider.addHours(3)
 
@@ -32,8 +34,13 @@ export class SendForgotPasswordMailUseCase {
       expires_date: expiresDate
     }
 
+    const variables = {
+      name: user.name,
+      link: `${process.env.FORGOT_MAIL_URL}${refreshToken}`
+    }
+
     await this.userTokenRepository.create(userTokenData)
 
-    await this.mailProvider.sendMail(email, "Password recovery", `O link para o reset é ${refreshToken}`)
+    await this.mailProvider.sendMail(email, "Password recovery", variables, templatePath)
   }
 }
