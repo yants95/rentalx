@@ -3,13 +3,18 @@ export default {
   bail: true,
   clearMocks: true,
   coverageProvider: "v8",
+  collectCoverageFrom: [
+    "<rootDir>/tests/**/*.ts",
+  ],
+  coverageDirectory: "coverage",
+  coverageReporters: ["lcov"],
   moduleNameMapper: {
-    '@/tests/(.*)': '<rootDir>/tests/$1',
-    '@/(.*)': '<rootDir>/src/$1'
+    "@/tests/(.*)": "<rootDir>/tests/$1",
+    "@/(.*)": "<rootDir>/src/$1"
   },
-  preset: 'ts-jest',
+  preset: "ts-jest",
   testEnvironment: "node",
   transform: {
-    '.+\\.ts$': 'ts-jest'
+    ".+\\.ts$": "ts-jest"
   },
 };
