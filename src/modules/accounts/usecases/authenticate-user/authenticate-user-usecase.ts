@@ -36,12 +36,12 @@ export class AuthenticateUserUseCase {
 
     const token = sign({}, String(process.env.JWT_SECRET), {
       subject: user.id,
-      expiresIn: process.env.JWT_EXPIRES_IN_TOKEN
+      expiresIn: "15m"
     });
 
     const refreshToken = sign({ email }, String(process.env.JWT_SECRET_REFRESH_TOKEN), {
       subject: user.id,
-      expiresIn: process.env.JWT_EXPIRES_IN_REFRESH_TOKEN
+      expiresIn: "30d"
     })
 
     const refreshTokenExpiresDate = this.dateProvider.addDays(30)
