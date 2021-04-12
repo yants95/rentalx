@@ -7,7 +7,7 @@ import { Router } from 'express'
 import multer from 'multer'
 
 const userRouter = Router()
-const uploadAvatar = multer(uploadConfig.upload('./tmp/avatar'))
+const uploadAvatar = multer(uploadConfig)
 
 const createUserController = new CreateUserController()
 const updateUserAvatarController = new UpdateUserAvatarController()
