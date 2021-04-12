@@ -3,26 +3,32 @@ export * from './mail-provider'
 export * from './storage-provider'
 
 import { IDateProvider, IMailProvider, IStorageProvider } from '@/shared/container/providers'
-import { DayJSProvider, EtherealMailProvider, LocalStorageProvider, S3StorageProvider } from '@/shared/container/providers'
+import { DayJSProvider, EtherealMailProvider, LocalStorageProvider, S3StorageProvider, SESMailProvider } from '@/shared/container/providers'
 
 import { container } from 'tsyringe'
+import {  } from './storage-provider'
 
 container.registerSingleton<IDateProvider>(
   'DayJSProvider',
   DayJSProvider
 )
 
-container.registerInstance<IMailProvider>(
-  'EtherealMailProvider',
-  new EtherealMailProvider()
-)
-
-const diskStorage = {
-  local: LocalStorageProvider,
-  s3: S3StorageProvider
+const mailProvider = {
+  ethereal: container.resolve(EtherealMailProvider),
+  ses: container.resolve(SESMailProvider)
 }
 
-container.registerSingleton<IStorageProvider>(
+container.registerInstance<IMailProvider>(
+  'MailProvider',
+  mailProvider[process.env.MAIL_PROVIDER]
+)
+
+const storageProvider = {
+  local: container.resolve(LocalStorageProvider),
+  s3: container.resolve(S3StorageProvider)
+}
+
+container.registerInstance<IStorageProvider>(
   'StorageProvider',
-  diskStorage[process.env.disk]
+  storageProvider[process.env.MAIL_PROVIDER]
 )
