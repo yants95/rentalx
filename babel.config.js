@@ -7,8 +7,8 @@ module.exports = {
     ["module-resolver",
       {
         alias: {
-          "@": ["./src"],
-          "@/tests": ["./tests"]
+          "@": "./src",
+          "@/tests": "./tests"
         }
       }
     ],

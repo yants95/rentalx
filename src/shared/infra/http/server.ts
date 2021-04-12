@@ -1,19 +1,19 @@
-import 'reflect-metadata'
+import "reflect-metadata"
 import "dotenv/config"
-import 'module-alias/register'
-import 'express-async-errors'
+import "module-alias/register"
+import "express-async-errors"
 
-import { router } from '@/shared/infra/http/routes'
-import apiDocs from '@/docs'
+import { router } from "@/shared/infra/http/routes"
+import apiDocs from "@/docs"
 import upload from "@/config/upload"
 
-import '@/shared/infra/typeorm';
-import '@/shared/container'
+import "@/shared/infra/typeorm";
+import "@/shared/container"
 
-import { AppError } from '@/shared/errors';
+import { AppError } from "@/shared/errors";
 
-import swaggerUi from 'swagger-ui-express'
-import express, { NextFunction, Request, Response } from 'express'
+import swaggerUi from "swagger-ui-express"
+import express, { NextFunction, Request, Response } from "express"
 
 const app = express()
 
