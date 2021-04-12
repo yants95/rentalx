@@ -1,10 +1,10 @@
 import 'reflect-metadata'
+import "dotenv/config"
 import 'module-alias/register'
 import 'express-async-errors'
 import express, { NextFunction, Request, Response } from 'express'
 
 import { router } from '@/shared/infra/http/routes'
-// import swaggerFile from '@/swagger.json'
 import apiDocs from '@/docs'
 
 import '@/shared/infra/typeorm';
