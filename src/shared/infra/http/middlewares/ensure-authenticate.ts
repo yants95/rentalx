@@ -17,11 +17,6 @@ export async function ensureAuthenticate(request: Request, _: Response, next: Ne
   try {
     const { sub: user_id } = verify(token, process.env.JWT_SECRET) as IPayload;
 
-    const userRepository = new UserRepository()
-    const userExists = await userRepository.findById(user_id)
-
-    if (!userExists) throw new AppError('User not found!', 401)
-
     request.user = { id: user_id }
     
     next()
