@@ -14,11 +14,11 @@ export class UpdateUserAvatarUseCase {
   async execute(user_id: string, avatar_file: string): Promise<void> {
     const user = await this.userRepository.findById(user_id)
   
-    if (user.avatar_url) await this.storageProvider.delete(user.avatar_url, "avatar")
+    if (user.avatar) await this.storageProvider.delete(user.avatar, "avatar")
   
     await this.storageProvider.save(avatar_file, "avatar")
 
-    user.avatar_url = avatar_file;
+    user.avatar = avatar_file;
     await this.userRepository.create(user)
   }
 }

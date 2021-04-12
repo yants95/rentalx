@@ -17,7 +17,7 @@ export class UserRepository implements IUserRepository {
             email: data.email,
             driver_license: data.driver_license,
             password: data.password,
-            avatar_url: data.avatar_url,
+            avatar: data.avatar,
             id: data.id
         })
 
