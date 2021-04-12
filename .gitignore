@@ -2,6 +2,7 @@
 node_modules
 pgdata
 .env
-tmp
+tmp/*
+!/tmp/.gitkeep
 coverage
 dist
