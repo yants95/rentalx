@@ -7,7 +7,7 @@ import { Router } from 'express'
 import multer from 'multer'
 
 const carRouter = Router()
-const upload = multer(uploadConfig.upload('./tmp/cars'))
+const upload = multer(uploadConfig)
 
 const createCarController = new CreateCarController()
 const listAvailableCarsController = new ListAvailableCarsController()
