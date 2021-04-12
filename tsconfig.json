@@ -6,7 +6,7 @@
     "module": "commonjs",                           
     "esModuleInterop": true,                        
     "sourceMap": true,                           
-    "outDir": "dist",                              
+    "outDir": "./dist",                              
     "rootDirs": ["src", "tests"],                              
     "baseUrl": "src",                             
     "paths": {
