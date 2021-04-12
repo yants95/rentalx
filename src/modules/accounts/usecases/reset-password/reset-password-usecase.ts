@@ -12,7 +12,7 @@ export class ResetPasswordUseCase {
     private userTokenRepository: IUserTokenRepository,
     @inject('UserRepository')
     private userRepository: IUserRepository,
-    @inject('DayJSProvider')
+    @inject('DateProvider')
     private dateProvider: IDateProvider
   ) {}
 

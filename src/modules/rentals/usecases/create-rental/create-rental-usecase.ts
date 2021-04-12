@@ -11,7 +11,7 @@ export class CreateRentalUseCase {
     constructor (
         @inject('RentalRepository')
         private rentalRepository: IRentalRepository,
-        @inject('DayJSProvider')
+        @inject('DateProvider')
         private dateProvider: IDateProvider,
         @inject('CarRepository')
         private carRepository: ICarRepository

@@ -22,7 +22,7 @@ export class AuthenticateUserUseCase {
     private userRepository: IUserRepository,
     @inject('UserTokenRepository')
     private usersTokenRepository: IUserTokenRepository,
-    @inject('DayJSProvider')
+    @inject('DateProvider')
     private dateProvider: IDateProvider
   ) {}
   async execute(email: string, password: string): Promise<IResponse> {

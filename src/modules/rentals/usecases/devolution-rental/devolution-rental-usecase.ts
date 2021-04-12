@@ -13,7 +13,7 @@ export class DevolutionRentalUseCase {
     private rentalRepository: IRentalRepository,
     @inject('CarRepository')
     private carRepository: ICarRepository,
-    @inject('DayJSProvider')
+    @inject('DateProvider')
     private dateProvider: IDateProvider
   ) {}
   
