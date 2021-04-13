@@ -46,6 +46,8 @@
     "yarn": "^1.22.10"
   },
   "dependencies": {
+    "@sentry/node": "^6.2.5",
+    "@sentry/tracing": "^6.2.5",
     "aws-sdk": "^2.884.0",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.4.0",
