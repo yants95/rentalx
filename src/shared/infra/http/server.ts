@@ -11,11 +11,14 @@ import "@/shared/infra/typeorm";
 import "@/shared/container"
 
 import { AppError } from "@/shared/errors";
+import { rateLimiter } from "@/shared/infra/http/middlewares"
 
 import swaggerUi from "swagger-ui-express"
 import express, { NextFunction, Request, Response } from "express"
 
 const app = express()
+
+app.use(rateLimiter)
 
 app.use(express.json())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs))
