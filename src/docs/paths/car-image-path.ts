@@ -3,12 +3,12 @@ export const carImagePath = {
     security: [{
       apiKeyAuth: []
     }],
-    tags: ["Cars"],
-    summary: "Upload images",
-    description: "Upload images",
+    tags: ['Cars'],
+    summary: 'Upload images',
+    description: 'Upload images',
     requestBody: {
       content: {
-        "multipart/form-data": {
+        'multipart/form-data': {
           schema: {
             $ref: '#/schemas/carImage'
           }
@@ -17,7 +17,7 @@ export const carImagePath = {
     },
     responses: {
       201: {
-        description: "Created"
+        description: 'Created'
       }
     }
   }

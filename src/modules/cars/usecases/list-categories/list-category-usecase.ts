@@ -4,12 +4,12 @@ import { ICategoryRepository } from '@/modules/cars/repositories'
 import { inject, injectable } from 'tsyringe'
 @injectable()
 export class ListCategoryUseCase {
-    constructor(
-        @inject('CategoryRepository')
-        private categoryRepository: ICategoryRepository
-    ) {}
+  constructor (
+    @inject('CategoryRepository')
+    private readonly categoryRepository: ICategoryRepository
+  ) {}
 
-    async execute(): Promise<Category[]> {
-        return await this.categoryRepository.list()
-    } 
+  async execute (): Promise<Category[]> {
+    return await this.categoryRepository.list()
+  }
 }

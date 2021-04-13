@@ -5,12 +5,12 @@ import { inject, injectable } from 'tsyringe'
 
 @injectable()
 export class ListAvailableCarsUseCase {
-    constructor(
-        @inject('CarRepository')
-        private carRepository: ICarRepository
-    ) {}
+  constructor (
+    @inject('CarRepository')
+    private readonly carRepository: ICarRepository
+  ) {}
 
-    async execute(category_id?: string, brand?: string, name?: string): Promise<Car[]> {
-        return await this.carRepository.findAvailable(brand, category_id, name)
-    }
+  async execute (category_id?: string, brand?: string, name?: string): Promise<Car[]> {
+    return await this.carRepository.findAvailable(brand, category_id, name)
+  }
 }

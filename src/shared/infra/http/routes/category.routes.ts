@@ -6,15 +6,15 @@ import multer from 'multer'
 
 const categoryRouter = Router()
 const upload = multer({
-    dest: './tmp'
+  dest: './tmp'
 })
 
 const createCategoryController = new CreateCategoryController()
 const importCategoryController = new ImportCategoryController()
 const listCategoryController = new ListCategoryController()
 
-categoryRouter.post('/', ensureAuthenticate, createCategoryController.handle);
-categoryRouter.get('/', ensureAuthenticate, listCategoryController.handle);
-categoryRouter.post('/import', ensureAuthenticate, upload.single('file'), importCategoryController.handle);
+categoryRouter.post('/', ensureAuthenticate, createCategoryController.handle)
+categoryRouter.get('/', ensureAuthenticate, listCategoryController.handle)
+categoryRouter.post('/import', ensureAuthenticate, upload.single('file'), importCategoryController.handle)
 
 export { categoryRouter }

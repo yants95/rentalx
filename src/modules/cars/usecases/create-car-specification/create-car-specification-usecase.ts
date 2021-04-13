@@ -1,27 +1,27 @@
-import { ICarRepository, ISpecificationRepository } from "@/modules/cars/repositories";
-import { Car } from "@/modules/cars/infra/typeorm/entities";
-import { AppError } from "@/shared/errors";
+import { ICarRepository, ISpecificationRepository } from '@/modules/cars/repositories'
+import { Car } from '@/modules/cars/infra/typeorm/entities'
+import { AppError } from '@/shared/errors'
 
-import { injectable, inject } from "tsyringe";
+import { injectable, inject } from 'tsyringe'
 @injectable()
 export class CreateCarSpecificationUseCase {
-    constructor (
-        @inject('CarRepository')
-        private carRepository: ICarRepository,
-        
-        @inject('SpecificationRepository')
-        private specificationRepository: ISpecificationRepository
-    ) {}
+  constructor (
+    @inject('CarRepository')
+    private readonly carRepository: ICarRepository,
 
-    async execute(car_id: string, specifications_id: string[]): Promise<Car> {
-        const carExisting = await this.carRepository.findById(car_id)
+    @inject('SpecificationRepository')
+    private readonly specificationRepository: ISpecificationRepository
+  ) {}
 
-        if (!carExisting) throw new AppError('Car not found!')
+  async execute (car_id: string, specifications_id: string[]): Promise<Car> {
+    const carExisting = await this.carRepository.findById(car_id)
 
-        const specifications = await this.specificationRepository.findByIds(specifications_id)
+    if (!carExisting) throw new AppError('Car not found!')
 
-        carExisting.specifications = specifications;
+    const specifications = await this.specificationRepository.findByIds(specifications_id)
 
-        return await this.carRepository.create(carExisting)
-    }
+    carExisting.specifications = specifications
+
+    return await this.carRepository.create(carExisting)
+  }
 }

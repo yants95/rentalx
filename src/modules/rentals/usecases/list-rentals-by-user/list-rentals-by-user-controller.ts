@@ -1,7 +1,7 @@
-import { ListRentalsByUserUseCase } from "@/modules/rentals/usecases";
+import { ListRentalsByUserUseCase } from '@/modules/rentals/usecases'
 
-import { Request, Response } from "express";
-import { container } from "tsyringe"
+import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 
 export class ListRentalsByUserController {
   async handle (request: Request, response: Response): Promise<Response> {

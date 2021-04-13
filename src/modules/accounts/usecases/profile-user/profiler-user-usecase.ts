@@ -1,15 +1,15 @@
 
-import { IUserRepository } from "@/modules/accounts/repositories";
-import { IUserResponseDTO } from "@/modules/accounts/dtos"
-import { UserMap } from "@/modules/accounts/mapper"
+import { IUserRepository } from '@/modules/accounts/repositories'
+import { IUserResponseDTO } from '@/modules/accounts/dtos'
+import { UserMap } from '@/modules/accounts/mapper'
 
-import { injectable, inject } from "tsyringe";
+import { injectable, inject } from 'tsyringe'
 
 @injectable()
 export class ProfileUserUseCase {
   constructor (
-    @inject("UserRepository")
-    private userRepository: IUserRepository
+    @inject('UserRepository')
+    private readonly userRepository: IUserRepository
   ) {}
 
   async execute (id: string): Promise<IUserResponseDTO> {

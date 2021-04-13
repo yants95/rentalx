@@ -5,7 +5,7 @@
     "target": "es2019",                                
     "module": "commonjs",                           
     "esModuleInterop": true,                        
-    "sourceMap": true,                           
+    "sourceMap": true,                            
     "outDir": "./dist",                              
     "rootDirs": ["src", "tests"],                              
     "baseUrl": "src",                             
@@ -13,6 +13,6 @@
       "@/tests/*": ["../tests/*"],
       "@/*": ["*"]
     },    
-    "resolveJsonModule": true                    
-  }
+    "resolveJsonModule": true,
+  }  
 }

@@ -1,7 +1,7 @@
-import * as Sentry from "@sentry/node"
-import * as Tracing from "@sentry/tracing"
+import * as Sentry from '@sentry/node'
+import * as Tracing from '@sentry/tracing'
 
-export function sentryInit(app) {
+export function sentryInit (app) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
     integrations: [
@@ -10,7 +10,7 @@ export function sentryInit(app) {
     ],
     tracesSampleRate: 1.0
   })
-  
+
   app.use(Sentry.Handlers.requestHandler())
   app.use(Sentry.Handlers.tracingHandler())
 }

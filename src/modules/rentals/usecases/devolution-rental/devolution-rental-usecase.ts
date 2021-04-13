@@ -1,22 +1,22 @@
-import { IRentalRepository } from "@/modules/rentals/repositories";
-import { ICarRepository } from "@/modules/cars/repositories";
-import { IDateProvider } from "@/shared/container/providers";
-import { AppError } from "@/shared/errors";
-import { Rental } from "@/modules/rentals/infra/typeorm/entities";
+import { IRentalRepository } from '@/modules/rentals/repositories'
+import { ICarRepository } from '@/modules/cars/repositories'
+import { IDateProvider } from '@/shared/container/providers'
+import { AppError } from '@/shared/errors'
+import { Rental } from '@/modules/rentals/infra/typeorm/entities'
 
-import { injectable, inject } from "tsyringe";
+import { injectable, inject } from 'tsyringe'
 
 @injectable()
 export class DevolutionRentalUseCase {
   constructor (
     @inject('RentalRepository')
-    private rentalRepository: IRentalRepository,
+    private readonly rentalRepository: IRentalRepository,
     @inject('CarRepository')
-    private carRepository: ICarRepository,
+    private readonly carRepository: ICarRepository,
     @inject('DateProvider')
-    private dateProvider: IDateProvider
+    private readonly dateProvider: IDateProvider
   ) {}
-  
+
   async execute (rental_id: string, user_id: string): Promise<Rental> {
     const minimal_daily = 1
     const rental = await this.rentalRepository.findById(rental_id)

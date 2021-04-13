@@ -8,16 +8,16 @@ import { injectable, inject } from 'tsyringe'
 type IRequest = Omit<ICreateCarDTO, 'id'>
 @injectable()
 export class CreateCarUseCase {
-    constructor (
-        @inject('CarRepository')
-        private carRepository: ICarRepository
-    ) {}
+  constructor (
+    @inject('CarRepository')
+    private readonly carRepository: ICarRepository
+  ) {}
 
-    async execute(data: IRequest): Promise<Car> {
-        const carExisting = await this.carRepository.findByLicensePlate(data.license_plate)
+  async execute (data: IRequest): Promise<Car> {
+    const carExisting = await this.carRepository.findByLicensePlate(data.license_plate)
 
-        if (carExisting) throw new AppError('Car already exists')
+    if (carExisting) throw new AppError('Car already exists')
 
-        return await this.carRepository.create(data)
-    }
+    return await this.carRepository.create(data)
+  }
 }

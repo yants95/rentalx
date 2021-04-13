@@ -1,19 +1,19 @@
-import { IUserTokenRepository, IUserRepository } from "@/modules/accounts/repositories";
-import { IDateProvider } from "@/shared/container/providers";
-import { AppError } from "@/shared/errors";
+import { IUserTokenRepository, IUserRepository } from '@/modules/accounts/repositories'
+import { IDateProvider } from '@/shared/container/providers'
+import { AppError } from '@/shared/errors'
 
-import { inject, injectable } from "tsyringe"
-import { hash } from "bcryptjs"
+import { inject, injectable } from 'tsyringe'
+import { hash } from 'bcryptjs'
 
 @injectable()
 export class ResetPasswordUseCase {
   constructor (
     @inject('UserTokenRepository')
-    private userTokenRepository: IUserTokenRepository,
+    private readonly userTokenRepository: IUserTokenRepository,
     @inject('UserRepository')
-    private userRepository: IUserRepository,
+    private readonly userRepository: IUserRepository,
     @inject('DateProvider')
-    private dateProvider: IDateProvider
+    private readonly dateProvider: IDateProvider
   ) {}
 
   async execute (token: string, password: string): Promise<void> {

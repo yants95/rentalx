@@ -1,7 +1,7 @@
-import { ProfileUserUseCase } from "@/modules/accounts/usecases";
+import { ProfileUserUseCase } from '@/modules/accounts/usecases'
 
-import { Request, Response } from "express";
-import { container } from "tsyringe"
+import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 
 export class ProfileUserController {
   async handle (request: Request, response: Response): Promise<Response> {

@@ -1,15 +1,15 @@
 export const categorySchema = {
-  type: "object",
+  type: 'object',
   properties: {
     name: {
-      type: "string"
+      type: 'string'
     },
     description: {
-      type: "string"
+      type: 'string'
     }
   },
   example: {
-    name: "category name sample",
-    description: "category description sample"
+    name: 'category name sample',
+    description: 'category description sample'
   }
 }

@@ -1,4 +1,4 @@
-import { User } from "../entities/user"
+import { User } from '@/modules/accounts/infra/typeorm/entities'
 
 import { v4 as uuidv4 } from 'uuid'
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
@@ -12,7 +12,7 @@ export class UserToken {
   user_id: string
 
   @ManyToOne(() => User)
-  @JoinColumn({ name: "user_id" })
+  @JoinColumn({ name: 'user_id' })
   user: User
 
   @Column()
@@ -24,7 +24,7 @@ export class UserToken {
   @CreateDateColumn()
   created_at: Date
 
-  constructor() {
+  constructor () {
     if (!this.id) {
       this.id = uuidv4()
     }

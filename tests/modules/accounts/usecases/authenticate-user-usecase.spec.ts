@@ -1,11 +1,11 @@
 
-import "reflect-metadata"
+import 'reflect-metadata'
 
-import { AuthenticateUserUseCase, CreateUserUseCase } from "@/modules/accounts/usecases"
-import { UserRepositorySpy, UserTokenRepositorySpy } from "@/tests/modules/accounts/mocks"
-import { ICreateUserDTO } from "@/modules/accounts/dtos"
-import { AppError } from "@/shared/errors"
-import { DayJSProvider } from "@/shared/container/providers"
+import { AuthenticateUserUseCase, CreateUserUseCase } from '@/modules/accounts/usecases'
+import { UserRepositorySpy, UserTokenRepositorySpy } from '@/tests/modules/accounts/mocks'
+import { ICreateUserDTO } from '@/modules/accounts/dtos'
+import { AppError } from '@/shared/errors'
+import { DayJSProvider } from '@/shared/container/providers'
 
 type SutTypes = {
   sut: AuthenticateUserUseCase
@@ -16,18 +16,18 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-    const userRepositorySpy = new UserRepositorySpy()
-    const userTokenRepositorySpy = new UserTokenRepositorySpy()
-    const dateProvider = new DayJSProvider()
-    const createUserUseCase = new CreateUserUseCase(userRepositorySpy)
-    const sut = new AuthenticateUserUseCase(userRepositorySpy, userTokenRepositorySpy, dateProvider)
-    return {
-      sut,
-      userRepositorySpy,
-      createUserUseCase,
-      userTokenRepositorySpy,
-      dateProvider
-    }
+  const userRepositorySpy = new UserRepositorySpy()
+  const userTokenRepositorySpy = new UserTokenRepositorySpy()
+  const dateProvider = new DayJSProvider()
+  const createUserUseCase = new CreateUserUseCase(userRepositorySpy)
+  const sut = new AuthenticateUserUseCase(userRepositorySpy, userTokenRepositorySpy, dateProvider)
+  return {
+    sut,
+    userRepositorySpy,
+    createUserUseCase,
+    userTokenRepositorySpy,
+    dateProvider
+  }
 }
 
 const makeUser = (): ICreateUserDTO => ({
@@ -52,8 +52,8 @@ describe('Authenticate User', () => {
     const { sut } = makeSut()
     const user = makeUser()
 
-    expect(async() => {
-        await sut.execute(user.email, user.password);
+    expect(async () => {
+      await sut.execute(user.email, user.password)
     }).rejects.toBeInstanceOf(AppError)
   })
 
@@ -61,9 +61,9 @@ describe('Authenticate User', () => {
     const { sut, createUserUseCase } = makeSut()
     const user = makeUser()
 
-    expect(async() => {
-        await createUserUseCase.execute(user);
-        await sut.execute(user.email, 'incorrect_password')
+    expect(async () => {
+      await createUserUseCase.execute(user)
+      await sut.execute(user.email, 'incorrect_password')
     }).rejects.toBeInstanceOf(AppError)
   })
 })

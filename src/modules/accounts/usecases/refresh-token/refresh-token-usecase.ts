@@ -1,10 +1,10 @@
-import { IUserTokenRepository } from "@/modules/accounts/repositories";
-import { IDateProvider } from "@/shared/container/providers";
-import { AppError } from "@/shared/errors";
+import { IUserTokenRepository } from '@/modules/accounts/repositories'
+import { IDateProvider } from '@/shared/container/providers'
+import { AppError } from '@/shared/errors'
 
-import { verify, sign } from "jsonwebtoken"
-import { injectable, inject } from "tsyringe";
-import { ICreateUserTokenDTO } from "../../dtos";
+import { verify, sign } from 'jsonwebtoken'
+import { injectable, inject } from 'tsyringe'
+import { ICreateUserTokenDTO } from '../../dtos'
 
 interface IPayload {
   sub: string
@@ -18,9 +18,9 @@ interface ITokenResponse {
 export class RefreshTokenUseCase {
   constructor (
     @inject('UserTokenRepository')
-    private usersTokenRepository: IUserTokenRepository,
+    private readonly usersTokenRepository: IUserTokenRepository,
     @inject('DateProvider')
-    private dateProvider: IDateProvider
+    private readonly dateProvider: IDateProvider
   ) {}
 
   async execute (token: string): Promise<ITokenResponse> {
@@ -28,7 +28,7 @@ export class RefreshTokenUseCase {
     const user_id = sub
     const userToken = await this.usersTokenRepository.findByUserIdAndRefreshToken(user_id, token)
 
-    if (!userToken) throw new AppError("Refresh token does not exists!")
+    if (!userToken) throw new AppError('Refresh token does not exists!')
 
     await this.usersTokenRepository.deleteTokenById(userToken.id)
 
@@ -49,8 +49,8 @@ export class RefreshTokenUseCase {
 
     const newToken = sign({}, String(process.env.JWT_SECRET), {
       subject: user_id,
-      expiresIn: "15m"
-    });
+      expiresIn: '15m'
+    })
 
     return {
       token: newToken,

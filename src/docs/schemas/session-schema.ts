@@ -1,15 +1,15 @@
 export const sessionSchema = {
-  type: "object",
+  type: 'object',
   properties: {
     email: {
-      type: "string"
+      type: 'string'
     },
     password: {
-      type: "string"
+      type: 'string'
     }
   },
   example: {
-    email: "your@mail.com",
-    password: "your_password"
+    email: 'your@mail.com',
+    password: 'your_password'
   }
 }

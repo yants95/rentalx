@@ -1,20 +1,20 @@
 export default {
-  roots: ["<rootDir>/tests"],
+  roots: ['<rootDir>/tests'],
   bail: true,
   clearMocks: true,
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
   collectCoverageFrom: [
-    "<rootDir>/tests/**/*.ts",
+    '<rootDir>/tests/**/*.ts'
   ],
-  coverageDirectory: "coverage",
-  coverageReporters: ["lcov"],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['lcov'],
   moduleNameMapper: {
-    "@/tests/(.*)": "<rootDir>/tests/$1",
-    "@/(.*)": "<rootDir>/src/$1"
+    '@/tests/(.*)': '<rootDir>/tests/$1',
+    '@/(.*)': '<rootDir>/src/$1'
   },
-  preset: "ts-jest",
-  testEnvironment: "node",
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   transform: {
-    ".+\\.ts$": "ts-jest"
-  },
-};
+    '.+\\.ts$': 'ts-jest'
+  }
+}

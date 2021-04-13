@@ -3,13 +3,13 @@ export const categoryPath = {
     security: [{
       apiKeyAuth: []
     }],
-    tags: ["Category"],
-    summary: "Create a category",
-    description: "Create a new category",
+    tags: ['Category'],
+    summary: 'Create a category',
+    description: 'Create a new category',
     requestBody: {
       required: true,
       content: {
-        "application/json": {
+        'application/json': {
           schema: {
             $ref: '#/schemas/category'
           }
@@ -18,10 +18,10 @@ export const categoryPath = {
     },
     responses: {
       201: {
-        description: "Created"
+        description: 'Created'
       },
       500: {
-        description: "Internal server error"
+        description: 'Internal server error'
       }
     }
   },
@@ -29,30 +29,30 @@ export const categoryPath = {
     security: [{
       apiKeyAuth: []
     }],
-    tags: ["Category"],
-    summary: "List all categories",
-    description: "List all categories",
+    tags: ['Category'],
+    summary: 'List all categories',
+    description: 'List all categories',
     responses: {
       200: {
-        description: "Success",
+        description: 'Success',
         content: {
-          "application/json": {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "id": {
-                    "type": "string"
+          'application/json': {
+            schema: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  id: {
+                    type: 'string'
                   },
-                  "name": {
-                    "type": "string"
+                  name: {
+                    type: 'string'
                   },
-                  "description": {
-                    "type": "string"
+                  description: {
+                    type: 'string'
                   },
-                  "created_at": {
-                    "type": "date"
+                  created_at: {
+                    type: 'date'
                   }
                 }
               }

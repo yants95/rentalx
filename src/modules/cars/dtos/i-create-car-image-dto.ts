@@ -1,4 +1,4 @@
 export type ICreateCarImageDTO = {
-    car_id: string
-    images_name: string[]
+  car_id: string
+  images_name: string[]
 }

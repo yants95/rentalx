@@ -3,21 +3,21 @@ import { v4 } from 'uuid'
 
 @Entity('cars_image')
 export class CarImage {
-    @PrimaryColumn()
-    id: string
+  @PrimaryColumn()
+  id: string
 
-    @Column()
-    car_id: string
+  @Column()
+  car_id: string
 
-    @Column()
-    image_name: string
+  @Column()
+  image_name: string
 
-    @Column()
-    created_at: string
+  @Column()
+  created_at: string
 
-    constructor () {
-        if (!this.id) {
-            this.id = v4()
-        }
+  constructor () {
+    if (!this.id) {
+      this.id = v4()
     }
+  }
 }

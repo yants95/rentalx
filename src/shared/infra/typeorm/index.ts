@@ -1,10 +1,10 @@
-import { createConnection, getConnectionOptions } from 'typeorm';
+import { createConnection, getConnectionOptions } from 'typeorm'
 interface IOptions {
-  host: string;
+  host: string
 }
 
 getConnectionOptions().then(options => {
   createConnection({
-    ...options,
-  });
-});
+    ...options
+  })
+})

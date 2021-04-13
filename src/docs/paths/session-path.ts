@@ -1,23 +1,23 @@
 export const sessionPath = {
   post: {
-    tags: ["Sessions"],
-    summary: "User authentication",
-    description: "Create a new session",
+    tags: ['Sessions'],
+    summary: 'User authentication',
+    description: 'Create a new session',
     requestBody: {
       content: {
-        "application/json": {
+        'application/json': {
           schema: {
-            $ref: "#/schemas/session"
+            $ref: '#/schemas/session'
           }
         }
       }
     },
     responses: {
       200: {
-        description: "Success"
+        description: 'Success'
       },
       400: {
-        description: "Email or password incorrect"
+        description: 'Email or password incorrect'
       }
     }
   }

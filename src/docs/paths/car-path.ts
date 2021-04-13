@@ -3,13 +3,13 @@ export const carPath = {
     security: [{
       apiKeyAuth: []
     }],
-    tags: ["Cars"],
-    summary: "Create a car",
-    description: "Create a new car",
+    tags: ['Cars'],
+    summary: 'Create a car',
+    description: 'Create a new car',
     requestBody: {
       required: true,
       content: {
-        "application/json": {
+        'application/json': {
           schema: {
             $ref: '#/schemas/car'
           }
@@ -18,14 +18,14 @@ export const carPath = {
     },
     responses: {
       201: {
-        description: "Created"
+        description: 'Created'
       },
       400: {
-        description: "Car already exists"
+        description: 'Car already exists'
       },
       500: {
-        description: "Internal server error"
+        description: 'Internal server error'
       }
     }
-  },
+  }
 }

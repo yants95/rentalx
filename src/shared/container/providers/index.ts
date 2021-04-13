@@ -1,12 +1,11 @@
+import { IDateProvider, IMailProvider, IStorageProvider , DayJSProvider, EtherealMailProvider, LocalStorageProvider, S3StorageProvider, SESMailProvider } from '@/shared/container/providers'
+
+import { container } from 'tsyringe'
+import { } from './storage-provider'
+
 export * from './date-provider'
 export * from './mail-provider'
 export * from './storage-provider'
-
-import { IDateProvider, IMailProvider, IStorageProvider } from '@/shared/container/providers'
-import { DayJSProvider, EtherealMailProvider, LocalStorageProvider, S3StorageProvider, SESMailProvider } from '@/shared/container/providers'
-
-import { container } from 'tsyringe'
-import {  } from './storage-provider'
 
 container.registerSingleton<IDateProvider>(
   'DayJSProvider',

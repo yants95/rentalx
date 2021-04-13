@@ -1,5 +1,5 @@
 
-import { CreateUserController, UpdateUserAvatarController, ProfileUserController }  from '@/modules/accounts/usecases'
+import { CreateUserController, UpdateUserAvatarController, ProfileUserController } from '@/modules/accounts/usecases'
 import { ensureAuthenticate } from '@/shared/infra/http/middlewares'
 import uploadConfig from '@/config/upload'
 
@@ -13,13 +13,13 @@ const createUserController = new CreateUserController()
 const updateUserAvatarController = new UpdateUserAvatarController()
 const profileUserController = new ProfileUserController()
 
-userRouter.post('/', createUserController.handle);
+userRouter.post('/', createUserController.handle)
 userRouter.patch(
-  '/avatar', 
+  '/avatar',
   ensureAuthenticate,
-  uploadAvatar.single('avatar'), 
+  uploadAvatar.single('avatar'),
   updateUserAvatarController.handle
-);
+)
 userRouter.get('/profile', ensureAuthenticate, profileUserController.handle)
 
 export { userRouter }

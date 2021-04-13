@@ -1,9 +1,9 @@
 export const categoryImportSchema = {
-  type: "object",
+  type: 'object',
   properties: {
-    "file": {
-      type: "string",
-      format: "binary"
+    file: {
+      type: 'string',
+      format: 'binary'
     }
   }
 }

@@ -1,7 +1,7 @@
-import { ResetPasswordUseCase } from "@/modules/accounts/usecases";
+import { ResetPasswordUseCase } from '@/modules/accounts/usecases'
 
-import { Request, Response } from "express";
-import { container } from "tsyringe";
+import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 
 export class ResetPasswordController {
   async handle (request: Request, response: Response): Promise<Response> {
@@ -10,7 +10,7 @@ export class ResetPasswordController {
 
     const resetPasswordUseCase = container.resolve(ResetPasswordUseCase)
     await resetPasswordUseCase.execute(String(token), password)
-    
+
     return response.send()
   }
 }

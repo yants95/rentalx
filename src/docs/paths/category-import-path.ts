@@ -3,12 +3,12 @@ export const categoryImportPath = {
     security: [{
       apiKeyAuth: []
     }],
-    tags: ["Category"],
-    summary: "Upload a new category",
-    description: "Upload a new category",
+    tags: ['Category'],
+    summary: 'Upload a new category',
+    description: 'Upload a new category',
     requestBody: {
       content: {
-        "multipart/form-data": {
+        'multipart/form-data': {
           schema: {
             $ref: '#/schemas/categoryImport'
           }
@@ -17,7 +17,7 @@ export const categoryImportPath = {
     },
     responses: {
       201: {
-        description: "Created"
+        description: 'Created'
       }
     }
   }
