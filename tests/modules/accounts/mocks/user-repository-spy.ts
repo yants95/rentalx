@@ -4,7 +4,7 @@ import { User } from '@/modules/accounts/infra/typeorm/entities'
 export class UserRepositorySpy implements IUserRepository {
   users: User[] = []
 
-  async create (data: ICreateUserDTO): Promise<void> {
+  async create (data: ICreateUserDTO): Promise<User> {
     const user = new User()
 
     Object.assign(user, {
@@ -15,6 +15,8 @@ export class UserRepositorySpy implements IUserRepository {
     })
 
     this.users.push(user)
+
+    return user
   }
 
   async findByEmail (email: string): Promise<User> {
