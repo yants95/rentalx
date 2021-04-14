@@ -13,7 +13,7 @@ export class CarImage {
   image_name: string
 
   @Column()
-  created_at: string
+  created_at: Date
 
   constructor () {
     if (!this.id) {
