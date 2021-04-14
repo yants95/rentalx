@@ -48,22 +48,16 @@ describe('Authenticate User', () => {
     expect(response).toHaveProperty('token')
   })
 
-  it('should not be able to authenticate a non existent user', () => {
+  it('should not be able to authenticate a non existent user', async () => {
     const { sut } = makeSut()
     const user = makeUser()
-
-    expect(async () => {
-      await sut.execute(user.email, user.password)
-    }).rejects.toBeInstanceOf(AppError)
+    await expect(sut.execute(user.email, user.password)).rejects.toBeInstanceOf(AppError)
   })
 
-  it('shout not be able to authenticate with incorrect password', () => {
+  it('shout not be able to authenticate with incorrect password', async () => {
     const { sut, createUserUseCase } = makeSut()
     const user = makeUser()
-
-    expect(async () => {
-      await createUserUseCase.execute(user)
-      await sut.execute(user.email, 'incorrect_password')
-    }).rejects.toBeInstanceOf(AppError)
+    await createUserUseCase.execute(user)
+    await expect(sut.execute(user.email, 'incorrect_password')).rejects.toBeInstanceOf(AppError)
   })
 })
