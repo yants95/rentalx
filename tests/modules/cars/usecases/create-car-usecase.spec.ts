@@ -39,11 +39,8 @@ describe('CreateCarUseCase', () => {
 
   it('should not be able to create a car with an existing license plate', async () => {
     const { sut } = makeSut()
-
-    expect(async () => {
-      await sut.execute(makeCar())
-      await sut.execute(makeCar())
-    }).rejects.toBeInstanceOf(AppError)
+    await sut.execute(makeCar())
+    await expect(sut.execute(makeCar())).rejects.toBeInstanceOf(AppError)
   })
 
   it('should not be able to create a car with availability true by default', async () => {
