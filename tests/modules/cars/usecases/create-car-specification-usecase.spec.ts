@@ -50,11 +50,9 @@ describe('CreateCarSpecificationUseCase', () => {
   })
 
   it('should not be able to add a new specification to an non-existing car', async () => {
-    expect(async () => {
-      const car_id = '123'
-      const specifications_id = ['54321']
-      const { sut } = makeSut()
-      await sut.execute(car_id, specifications_id)
-    }).rejects.toBeInstanceOf(AppError)
+    const { sut } = makeSut()
+    const car_id = '123'
+    const specifications_id = ['54321']
+    await expect(sut.execute(car_id, specifications_id)).rejects.toBeInstanceOf(AppError)
   })
 })
