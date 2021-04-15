@@ -10,4 +10,13 @@ export class CarImagesRepositorySpy implements ICarImagesRepository {
     this.carImages.push(carImage)
     return carImage
   }
+
+  async findImageByCarId (car_id: string): Promise<CarImage> {
+    return this.carImages.find(carImage => carImage.car_id === car_id)
+  }
+
+  async deleteCarImage (image_id: string): Promise<void> {
+    const deleteImage = this.carImages.find(car => car.id === image_id)
+    this.carImages.splice(this.carImages.indexOf(deleteImage))
+  }
 }

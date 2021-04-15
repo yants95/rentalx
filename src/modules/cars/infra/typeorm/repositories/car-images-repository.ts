@@ -17,4 +17,12 @@ export class CarImagesRepository implements ICarImagesRepository {
     })
     return await this.repository.save(carImage)
   }
+
+  async findImageByCarId (car_id: string): Promise<CarImage> {
+    return await this.repository.findOne({ car_id })
+  }
+
+  async deleteCarImage (car_id: string, image_name: string): Promise<void> {
+    await this.repository.delete({ car_id, image_name })
+  }
 }
