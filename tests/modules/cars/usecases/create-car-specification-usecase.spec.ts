@@ -55,4 +55,19 @@ describe('CreateCarSpecificationUseCase', () => {
     const specifications_id = ['54321']
     await expect(sut.execute(car_id, specifications_id)).rejects.toBeInstanceOf(AppError)
   })
+
+  it('should be able to list specifications by name', async () => {
+    const { specificationRepositorySpy } = makeSut()
+    const specification = await specificationRepositorySpy.create(makeSpecification())
+    const specificationName = await specificationRepositorySpy.findByName(specification.name)
+    expect(specificationName.name).toBe(specification.name)
+  })
+
+  it('should be able to list specifications by ids', async () => {
+    const { specificationRepositorySpy } = makeSut()
+    const specification = await specificationRepositorySpy.create(makeSpecification())
+    const specifications = await specificationRepositorySpy.findByIds([String(specification.id), String(specification.id)])
+    // console.log(specifications)
+    expect(specifications.length).toBe(1)
+  })
 })
