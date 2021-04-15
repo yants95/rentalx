@@ -57,4 +57,11 @@ describe('ListCarsUseCase', () => {
     const cars = await sut.execute(car.category_id)
     expect(cars).toEqual([car])
   })
+
+  it('should return null if no available cars were found', async () => {
+    const { sut, carRepositorySpy } = makeSut()
+    await carRepositorySpy.create({ ...makeCar(), available: false })
+    const cars = await sut.execute()
+    expect(cars).toEqual([])
+  })
 })
