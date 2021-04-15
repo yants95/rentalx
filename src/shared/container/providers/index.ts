@@ -8,7 +8,7 @@ export * from './mail-provider'
 export * from './storage-provider'
 
 container.registerSingleton<IDateProvider>(
-  'DayJSProvider',
+  'DateProvider',
   DayJSProvider
 )
 
